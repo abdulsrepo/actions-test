@@ -11,6 +11,8 @@ jobs:
   run-github-actions:
     runs-on: ubuntu-latest
     steps:
+      - name: payload
+        run: echo ${{ github.event.client_payload.env }}
       - name: List Files Before Checkout
         run: |
           pwd
@@ -21,7 +23,7 @@ jobs:
           echo "${{ github.token }}"
       - name: Checkout
         uses: actions/checkout@v3
-      - name: List Files After Checkoutss
+      - name: List Files After Checkout
         run: |
           pwd
           ls -a
